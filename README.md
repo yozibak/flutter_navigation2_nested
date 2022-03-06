@@ -1,16 +1,24 @@
-# nested_nav2
+# flutter_navigation2_nested
+Small working demo for nested router with Navigation2.0 in Flutter
 
-A new Flutter project.
+## How this works
 
-## Getting Started
+https://user-images.githubusercontent.com/58211188/156921765-48211978-a4c5-44c3-bf36-82d201eadb53.mov
 
-This project is a starting point for a Flutter application.
+Not users can switch tabs and its tab states are not lost.
 
-A few resources to get you started if this is your first Flutter project:
+In concept this structure has 2 AppState managers:
+- the AppGlobalState (which handles login/logout)
+- the TabState (which handles local 'within' tab state, so users can explore within its tab while holding other tabs' state)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Looks like:
+```
+App (**GlobalAppState**, GlobalRouterDelegate)
+ | - Login
+ | - AppTabs (IndexedStack)
+    | - Food Tab (**FoodTabState**, FoodTabRouterDelegate)
+    | - Settings Tab
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## TODO
+- Try connecting with Riverpod provider for appState Manager
